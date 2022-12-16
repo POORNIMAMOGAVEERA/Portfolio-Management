@@ -1,0 +1,41 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<app-navbar></app-navbar>
+<header>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </header>
+  <div class="mainDiv">
+    <div class="navBar">
+    </div>
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" class="formCont">
+        <h1>Disburse Pension</h1>
+        <input
+          type="text"
+          autocomplete="off"
+          name="aadhaarNumber"
+          id="aadhaarNumber"
+          placeholder="aadhaarNumber"
+          [(ngModel)]="credentials.aadhaarNumber" 
+          required
+        />
+       
+        <input
+          type="number"
+          step=0.01
+          autocomplete="off"
+          name="pensionAmount"
+          id="pensionAmount"
+          placeholder="pensionAmount"
+          [(ngModel)]="credentials.pensionAmount" 
+          required
+        />
+        <select type="number" name="bankServiceCharge" [(ngModel)] = "credentials.bankServiceCharge" required >
+            <option value=""  selected style="color: grey;">bankServiceCharge</option>
+            <option value=500>Public(500)</option>
+            <option value=550>Private(550)</option>
+          </select>
+          <button type="submit" mat-raised-button color="primary">Disburse Pension</button>
+          <button type="reset" mat-raised-button color="accent" style="margin-left: 10px;">Reset</button>
+      </form>
+    </div>
+  </div>

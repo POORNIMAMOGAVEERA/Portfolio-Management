@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<header>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </header>
+  <div>
+    <div class="container">
+      <div class="sub-container">
+        <div class="content-labels">
+          <label class="content-items">Name :</label>
+          <label class="content-items">DOB:</label>
+          <label class="content-items">Pan Number :</label>
+          <label class="content-items">Aadhaar Number :</label>
+        </div>
+         <div class="content">
+          <label class="content-items">{{pension.name}}</label>
+          <label class="content-items">{{pension.dateOfBirth}}</label>
+          <label class="content-items">{{pension.panNumber}}</label>
+          <label class="content-items">{{pension.aadhaarNumber}}</label>
+        </div>
+        <div class="btn">
+          <button (click)="logout()">LogOut</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
