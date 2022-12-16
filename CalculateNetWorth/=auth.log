@@ -1,0 +1,465 @@
+2022-12-16 10:53:20.866  INFO 1192 --- [restartedMain] c.c.C.CalculateNetWorthApplication       : Starting CalculateNetWorthApplication using Java 13.0.2 on DESKTOP-CR3K4ID with PID 1192 (C:\Users\Lenovo\Downloads\CalculateNetWorth\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\CalculateNetWorth)
+2022-12-16 10:53:20.969 DEBUG 1192 --- [restartedMain] c.c.C.CalculateNetWorthApplication       : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-12-16 10:53:20.971  INFO 1192 --- [restartedMain] c.c.C.CalculateNetWorthApplication       : No active profile set, falling back to 1 default profile: "default"
+2022-12-16 10:53:21.169  INFO 1192 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-16 10:53:21.170  INFO 1192 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-16 10:53:25.217  INFO 1192 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-16 10:53:25.602  INFO 1192 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 365 ms. Found 4 JPA repository interfaces.
+2022-12-16 10:53:26.621  INFO 1192 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2673f0ca-3a1c-3f0a-b2af-1ba0f99f7dac
+2022-12-16 10:53:32.114  INFO 1192 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7002 (http)
+2022-12-16 10:53:32.276  INFO 1192 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-16 10:53:32.277  INFO 1192 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-12-16 10:53:32.810  INFO 1192 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-16 10:53:32.811  INFO 1192 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11639 ms
+2022-12-16 10:53:32.958  INFO 1192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-16 10:53:34.717  INFO 1192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-16 10:53:34.735  INFO 1192 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:NetWorth'
+2022-12-16 10:53:36.196  INFO 1192 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-16 10:53:39.529  INFO 1192 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-12-16 10:53:41.926  INFO 1192 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-16 10:53:44.091  INFO 1192 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-16 10:53:49.388 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : create table asset_sale_response (id integer not null, net_worth double not null, sales_status boolean not null, primary key (id))
+2022-12-16 10:53:49.428 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : create table mutual_fund_details (mutual_id integer not null, mf_count integer not null, mf_name varchar(255), id integer, primary key (mutual_id))
+2022-12-16 10:53:49.431 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : create table portfolio (id integer not null, primary key (id))
+2022-12-16 10:53:49.433 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : create table stock_details (stock_id integer not null, stock_count integer not null, stock_name varchar(255), id integer, primary key (stock_id))
+2022-12-16 10:53:49.437 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2022-12-16 10:53:49.442 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : alter table asset_sale_response add constraint FKc0of8dco9p84nf3576ypkdq5j foreign key (id) references portfolio
+2022-12-16 10:53:49.454 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : alter table mutual_fund_details add constraint FKogwe3fhs5v82libgiebvls4p5 foreign key (id) references portfolio
+2022-12-16 10:53:49.458 DEBUG 1192 --- [restartedMain] org.hibernate.SQL                        : alter table stock_details add constraint FK9fiptusc8a1vr4dgt01tdnu14 foreign key (id) references portfolio
+2022-12-16 10:53:49.461  INFO 1192 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-16 10:53:49.490  INFO 1192 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-16 10:53:50.837  WARN 1192 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-16 10:53:51.008  WARN 1192 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-12-16 10:53:52.484 DEBUG 1192 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 9 mappings in 'requestMappingHandlerMapping'
+2022-12-16 10:53:52.704  INFO 1192 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-12-16 10:53:53.004 DEBUG 1192 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-16 10:53:53.126 DEBUG 1192 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-16 10:53:53.144 DEBUG 1192 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-16 10:53:54.134  INFO 1192 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2022-12-16 10:53:54.640  WARN 1192 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-16 10:53:54.686  INFO 1192 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-16 10:53:55.231  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-16 10:53:55.264  INFO 1192 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 10:53:55.387  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-16 10:53:55.388  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-16 10:53:55.388  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-16 10:53:55.389  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-16 10:53:55.389  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-16 10:53:55.390  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-16 10:53:55.390  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-16 10:53:56.573 DEBUG 1192 --- [restartedMain] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/
+2022-12-16 10:53:56.803 DEBUG 1192 --- [restartedMain] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:53:56.940 DEBUG 1192 --- [restartedMain] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:53:56.942 DEBUG 1192 --- [restartedMain] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:53:56.975  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-16 10:53:57.000  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-16 10:53:57.005  INFO 1192 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-16 10:53:57.035  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671168237015 with initial instances count: 2
+2022-12-16 10:53:57.078  INFO 1192 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CALCULATE-NET-WORTH with eureka with status UP
+2022-12-16 10:53:57.081  INFO 1192 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671168237081, current=UP, previous=STARTING]
+2022-12-16 10:53:57.085  INFO 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002: registering service...
+2022-12-16 10:53:57.152 DEBUG 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] o.s.web.client.RestTemplate              : HTTP POST http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH
+2022-12-16 10:53:57.158 DEBUG 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:53:57.192 DEBUG 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] o.s.web.client.RestTemplate              : Writing [InstanceInfo [instanceId = DESKTOP-CR3K4ID:calculate-net-worth:7002, appName = CALCULATE-NET-WORTH, hostName = DESKTOP-CR3K4ID, status = UP, ipAddr = 192.168.1.3, port = 7002, securePort = 443, dataCenterInfo = com.netflix.appinfo.MyDataCenterInfo@5db4eb38] as "application/json"
+2022-12-16 10:53:57.365 DEBUG 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] o.s.web.client.RestTemplate              : Response 204 NO_CONTENT
+2022-12-16 10:53:57.366  INFO 1192 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002 - registration status: 204
+2022-12-16 10:53:57.452  INFO 1192 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7002 (http) with context path ''
+2022-12-16 10:53:57.453  INFO 1192 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7002
+2022-12-16 10:53:57.810  INFO 1192 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-12-16 10:53:57.859  INFO 1192 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-12-16 10:53:57.951  INFO 1192 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-12-16 10:53:58.308  INFO 1192 --- [restartedMain] c.c.C.CalculateNetWorthApplication       : Started CalculateNetWorthApplication in 39.463 seconds (JVM running for 41.126)
+2022-12-16 10:54:27.003 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:54:27.004 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:54:27.008 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:54:27.009 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:54:27.016 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:54:27.037 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:54:27.044 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:54:57.022 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:54:57.023 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:54:57.054 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:54:57.055 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:54:57.059 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:54:57.114 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:54:57.114 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:55:27.068 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:55:27.070 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:55:27.074 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:55:27.131 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:55:27.132 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:55:27.136 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:55:27.136 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:55:57.079 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:55:57.080 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:55:57.085 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:55:57.143 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:55:57.144 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:55:57.148 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:55:57.148 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:56:27.098 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:56:27.099 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:56:27.103 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:56:27.162 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:56:27.163 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:56:27.166 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:56:27.168 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:56:57.118 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:56:57.119 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:56:57.123 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:56:57.180 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:56:57.181 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:56:57.220 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:56:57.220 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:57:27.141 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:57:27.142 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:57:27.146 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:57:27.235 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:57:27.235 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:57:27.239 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:57:27.240 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:57:57.187 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:57:57.188 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:57:57.192 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:57:57.250 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:57:57.251 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:57:57.254 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:57:57.254 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:58:27.205 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:58:27.207 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:58:27.211 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:58:27.269 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:58:27.270 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:58:27.366 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:58:27.367 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:58:55.399  INFO 1192 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 10:58:57.214 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:58:57.215 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:58:57.219 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:58:57.370 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:58:57.371 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:58:57.375 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:58:57.376 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:59:27.231 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:59:27.232 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:59:27.236 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:59:27.387 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:59:27.388 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:59:27.391 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:59:27.392 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 10:59:57.248 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 10:59:57.249 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:59:57.299 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:59:57.406 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 10:59:57.407 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 10:59:57.421 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 10:59:57.422 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:00:27.310 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:00:27.311 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:00:27.315 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:00:27.438 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:00:27.439 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:00:27.442 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:00:27.443 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:00:57.318 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:00:57.319 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:00:57.322 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:00:57.461 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:00:57.462 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:00:57.465 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:00:57.466 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:01:27.332 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:01:27.333 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:01:27.337 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:01:27.474 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:01:27.475 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:01:27.478 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:01:27.478 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:01:57.346 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:01:57.347 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:01:57.351 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:01:57.487 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:01:57.488 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:01:57.491 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:01:57.492 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:02:27.366 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:02:27.367 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:02:27.371 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:02:27.506 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:02:27.506 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:02:27.510 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:02:27.510 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:02:57.383 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:02:57.384 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:02:57.388 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:02:57.523 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:02:57.524 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:02:57.527 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:02:57.528 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:03:27.393 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:03:27.394 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:03:27.398 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:03:27.536 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:03:27.537 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:03:27.541 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:03:27.542 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:03:55.405  INFO 1192 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 11:03:57.401 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:03:57.402 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:03:57.405 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:03:57.556 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:03:57.556 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:03:57.559 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:03:57.560 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:04:27.421 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:04:27.422 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:04:27.426 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:04:27.562 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:04:27.563 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:04:27.566 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:04:27.566 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:04:57.432 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:04:57.433 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:04:57.436 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:04:57.571 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:04:57.572 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:04:57.575 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:04:57.575 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:05:27.442 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:05:27.443 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:05:27.476 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:05:27.584 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:05:27.585 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:05:27.588 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:05:27.589 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:05:57.477 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:05:57.478 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:05:57.481 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:05:57.602 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:05:57.602 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:05:57.605 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:05:57.606 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:06:27.487 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:06:27.488 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:06:27.492 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:06:27.613 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:06:27.614 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:06:27.617 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:06:27.618 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:06:57.501 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:06:57.503 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:06:57.506 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:06:57.627 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:06:57.628 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:06:57.631 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:06:57.632 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:07:27.509 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:07:27.510 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:07:27.514 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:07:27.636 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:07:27.637 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:07:27.639 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:07:27.640 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:07:57.526 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:07:57.527 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:07:57.530 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:07:57.653 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:07:57.654 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:07:57.657 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:07:57.657 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:08:27.535 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:08:27.536 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:08:27.540 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:08:27.662 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:08:27.663 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:08:27.665 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:08:27.666 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:08:55.415  INFO 1192 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 11:08:57.554 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:08:57.555 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:08:57.558 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:08:57.681 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:08:57.682 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:08:57.684 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:08:57.685 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:09:27.564 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:09:27.565 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:09:27.568 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:09:27.689 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:09:27.690 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:09:27.699 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:09:27.700 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:09:57.574 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:09:57.576 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:09:57.580 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:09:57.715 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:09:57.718 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:09:57.722 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:09:57.723 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:10:27.590 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:10:27.591 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:10:27.594 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:10:27.732 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:10:27.733 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:10:27.736 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:10:27.737 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:10:57.602 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:10:57.603 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:10:57.607 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:10:57.742 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:10:57.743 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:10:57.746 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:10:57.746 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:11:27.613 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:11:27.614 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:11:27.617 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:11:27.756 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:11:27.757 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:11:27.760 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:11:27.760 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:11:57.630 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:11:57.631 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:11:57.634 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:11:57.771 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:11:57.772 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:11:57.774 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:11:57.775 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:12:27.636 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:12:27.637 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:12:27.641 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:12:32.950 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:12:32.951 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:12:32.954 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:12:32.954 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:12:57.652 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:12:57.653 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:12:57.656 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:13:03.234 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:13:03.235 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:13:03.238 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:13:03.239 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:13:33.243 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:13:33.244 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:13:33.247 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:13:33.247 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:13:35.044 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:13:36.965 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:13:37.361 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:13:55.427  INFO 1192 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 11:14:03.606 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:14:03.607 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:14:03.609 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:14:03.610 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:14:07.376 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:14:07.377 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:14:07.380 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:14:33.617 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:14:33.618 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:14:33.620 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:14:33.621 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:14:37.394 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:14:37.395 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:14:37.398 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:15:03.656 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:15:03.676 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:15:03.678 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:15:03.679 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:15:07.405 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:15:07.453 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:15:07.482 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:15:33.694 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:15:33.695 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:15:33.698 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:15:33.698 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:15:37.495 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:15:37.496 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:15:37.499 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:16:03.710 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:16:03.710 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:16:03.749 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:16:03.750 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:16:07.502 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:16:07.503 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:16:07.506 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:16:33.866 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:16:33.867 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:16:33.991 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:16:33.991 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:16:37.519 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:16:37.520 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:16:37.523 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:17:04.151 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:17:04.184 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:17:04.186 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:17:04.187 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:17:07.532 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:17:07.533 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:17:07.535 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:17:34.195 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:17:34.196 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:17:34.199 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:17:34.200 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:17:37.585 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:17:37.586 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:17:38.234 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:18:04.312 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:18:08.037 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:18:08.099 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:18:08.239 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:18:08.239 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:18:08.242 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:18:08.540 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:18:38.249 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:18:38.250 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:18:38.254 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:18:39.089 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:18:41.100 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:18:41.988 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:18:41.989 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:18:55.440  INFO 1192 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-16 11:19:08.262 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:19:08.263 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:19:08.266 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:19:12.240 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:19:12.241 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:19:12.573 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:19:12.574 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:19:38.282 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:19:38.282 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:19:38.396 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:19:42.584 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:19:42.585 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:19:42.588 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:19:42.588 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:20:08.402 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:20:08.403 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:20:08.433 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:20:12.596 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:20:12.597 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:20:12.600 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:20:12.600 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:20:38.443 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:20:38.444 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:20:38.461 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:20:42.614 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:20:42.615 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:20:42.618 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:20:42.618 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:21:08.470 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:21:08.470 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:21:08.473 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:21:12.625 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:21:12.626 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:21:12.629 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:21:12.630 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:21:38.644 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:21:38.669 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:21:38.696 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:21:58.865 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8761/eureka/apps/delta
+2022-12-16 11:23:04.252 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://localhost:8761/eureka/apps/CALCULATE-NET-WORTH/DESKTOP-CR3K4ID:calculate-net-worth:7002?status=UP&lastDirtyTimestamp=1671168237081
+2022-12-16 11:23:04.283 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:23:04.283 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2022-12-16 11:23:04.439 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:23:04.439 DEBUG 1192 --- [DiscoveryClient-HeartbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2022-12-16 11:23:04.439 DEBUG 1192 --- [DiscoveryClient-CacheRefreshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2022-12-16 11:23:04.489  WARN 1192 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m28s24ms636µs400ns).
