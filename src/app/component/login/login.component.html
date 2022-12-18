@@ -1,0 +1,39 @@
+
+  <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </header>
+  <div class="mainDiv">
+    <div class="navBar">
+      <nav>
+        <h2>Portfolio Management</h2>
+      </nav>
+    </div>
+    <div class="container">
+      <form (ngSubmit)="login()" class="formCont">
+        <h1>LOGIN</h1>
+        <input
+          type="text"
+          autocomplete="off"
+          name="userName"
+          id="userName"
+          placeholder="userName"
+          [(ngModel)] = "userName"
+          required
+        />
+        <input
+          type="password"
+          autocomplete="off"
+          name="password"
+          id="password"
+          placeholder="Password"
+          [(ngModel)] = "password"
+          required
+        />
+  
+        <a routerLink="/register" class="forgotpswd">Don't have an Account?</a>
+        <button type="submit">Login</button>
+        <button type="button" onclick="window.location.href='http://localhost:4200/login'"> Cancel</button> 
+      </form>
+    </div>
+  </div>
+  <router-outlet></router-outlet> 
