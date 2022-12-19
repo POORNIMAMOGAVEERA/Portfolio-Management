@@ -16,7 +16,7 @@ b.Sell Assets and determine the final net-worth
  
 4.Authorization Microservice:This Microservice take care of Authentication and Authorization
 -After every successful Login JWT token gets generated
--Every Request made by user authenticated here.
+-Every Request made by user authorized here.
 Port No:http://localhost:7003
 
 5.Customer Portal: An web portal that allows a customer to Login and allows to do folloing operations
